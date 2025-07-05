@@ -1,0 +1,224 @@
+/* style.css */
+
+/* Estilos Generales */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #24282f; /* Fondo oscuro */
+    color: #f5f5f5; /* Texto claro */
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Cabecera de la Aplicación */
+.app-header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 20px 0;
+    width: 100%;
+    max-width: 1200px;
+    box-sizing: border-box;
+}
+
+.app-header h1 {
+    font-size: 3.5em;
+    color: #97ce4c; /* Verde distintivo */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+}
+
+.app-header p {
+    font-size: 1.2em;
+    color: #b0b0b0;
+    font-style: italic;
+}
+
+/* Contenido Principal */
+.main-content {
+    width: 100%;
+    max-width: 900px; /* Ancho máximo para el contenido principal */
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 40px; /* Espacio entre cada sección de clase */
+}
+
+/* Estilos para cada sección de clase */
+.class-section {
+    background-color: #3c3e44; /* Fondo de la tarjeta */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    padding: 30px;
+    text-align: center;
+    border: 1px solid #555; /* Borde sutil */
+    transition: transform 0.2s ease-in-out;
+}
+
+.class-section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6);
+}
+
+.class-section h2 {
+    color: #97ce4c;
+    margin-top: 0;
+    margin-bottom: 25px;
+    font-size: 2em;
+    border-bottom: 2px solid #97ce4c;
+    padding-bottom: 10px;
+    display: inline-block; /* Para que el borde no ocupe todo el ancho */
+}
+
+/* Área de Visualización */
+.display-area {
+    background-color: #2b2d31;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 25px;
+    border: 1px solid #666;
+    text-align: left; /* Alinea el texto a la izquierda dentro del display */
+}
+
+.display-area p {
+    margin: 8px 0;
+    font-size: 1.1em;
+    line-height: 1.4;
+}
+
+.display-area strong {
+    color: #f9f9f9;
+    min-width: 120px; /* Asegura que las etiquetas "strong" tengan un ancho mínimo */
+    display: inline-block; /* Permite el min-width */
+}
+
+.display-area span {
+    color: #e0e0e0;
+    font-weight: bold;
+}
+
+/* Área de Controles */
+.controls-area {
+    display: flex;
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan en pantallas pequeñas */
+    justify-content: center;
+    gap: 15px; /* Espacio entre los controles */
+    margin-top: 20px;
+}
+
+.controls-area input[type="text"],
+.controls-area input[type="number"],
+.controls-area select {
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: 1px solid #97ce4c;
+    background-color: #2b2d31;
+    color: #f5f5f5;
+    font-size: 1em;
+    outline: none;
+    width: 200px; /* Ancho fijo para inputs */
+    text-align: center;
+}
+
+.controls-area input::placeholder {
+    color: #aaa;
+}
+
+.controls-area button {
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    background-color: #97ce4c;
+    color: #24282f;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out, transform 0.1s;
+}
+
+.controls-area button:hover {
+    background-color: #72a839;
+    transform: translateY(-2px);
+}
+
+.controls-area button:active {
+    transform: translateY(0);
+}
+
+/* Mensajes de éxito/error */
+.message {
+    margin-top: 20px;
+    font-size: 1em;
+    font-weight: bold;
+    min-width: 100%; /* Ocupa todo el ancho disponible para el mensaje */
+    color: #f5f5f5; /* Color por defecto, ajustado por JS */
+}
+
+/* Estilos específicos para la calculadora */
+.calculator-controls {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Columnas más pequeñas para calculadora */
+    gap: 15px;
+    align-items: center;
+    justify-items: center;
+}
+
+.calculator-controls input,
+.calculator-controls select,
+.calculator-controls button {
+    width: auto; /* Ancho automático para no romper el grid */
+    min-width: 100px;
+}
+.calculator-controls #calc-resultado {
+    grid-column: span 3; /* Ocupa más columnas para el resultado */
+    font-size: 1.3em;
+    margin-top: 10px;
+    color: #f5f5f5;
+}
+.calculator-controls .message {
+    grid-column: span 3;
+}
+
+
+/* Media Queries para responsividad */
+@media (max-width: 768px) {
+    .app-header h1 { font-size: 2.5em; }
+    .app-header p { font-size: 1em; }
+    .main-content { padding: 15px; gap: 30px; }
+    .class-section { padding: 20px; }
+    .class-section h2 { font-size: 1.6em; margin-bottom: 20px;}
+    
+    .controls-area {
+        flex-direction: column; /* Apila los controles en pantallas pequeñas */
+        gap: 10px;
+    }
+    .controls-area input,
+    .controls-area select,
+    .controls-area button {
+        width: 90%; /* Ocupa casi todo el ancho */
+        max-width: 300px; /* Pero no demasiado ancho */
+    }
+
+    .display-area strong {
+        min-width: 90px;
+    }
+    .calculator-controls {
+        grid-template-columns: 1fr; /* Una columna en móviles */
+    }
+    .calculator-controls #calc-resultado,
+    .calculator-controls .message {
+        grid-column: auto; /* Restablece el span */
+    }
+}
+
+@media (max-width: 480px) {
+    .app-header h1 { font-size: 1.8em; }
+    .app-header p { font-size: 0.9em; }
+    .main-content { padding: 10px; gap: 20px; }
+    .class-section { padding: 15px; }
+    .class-section h2 { font-size: 1.4em; }
+}
