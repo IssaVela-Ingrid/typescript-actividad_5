@@ -6,8 +6,13 @@ on:
       - main # Asegúrate de que esta sea tu rama principal
   workflow_dispatch: # Permite ejecutar el flujo de trabajo manualmente
 
+permissions: # <--- ¡AÑADE ESTA SECCIÓN AQUÍ!
+  contents: read
+  pages: write
+  id-token: write # ¡Esta es la línea clave para el error!
+
 jobs:
-  build-and-deploy:
+  build-and-deploy: # O 'build' si tienes dos jobs separados
     runs-on: ubuntu-latest
 
     steps:
@@ -17,19 +22,19 @@ jobs:
       - name: Setup Node.js environment
         uses: actions/setup-node@v4
         with:
-          node-version: '20' # Puedes probar con '18' si '20' da problemas
+          node-version: '20'
           cache: 'npm'
 
       - name: Install project dependencies
         run: npm install
 
       - name: Build Vite project for production
-        run: npm run build # Este comando es el que genera tu carpeta dist
+        run: npm run build
 
       - name: Upload production build artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./dist # Esta es la carpeta que GitHub Pages debe servir
+          path: ./dist
 
       - name: Deploy to GitHub Pages
         id: deployment
