@@ -3,17 +3,20 @@ name: Deploy Vite Project to GitHub Pages
 on:
   push:
     branches:
-      - main # Asegúrate de que esta sea tu rama principal
-  workflow_dispatch: # Permite ejecutar el flujo de trabajo manualmente
+      - main
+  workflow_dispatch:
 
-permissions: # <--- ¡AÑADE ESTA SECCIÓN AQUÍ!
+permissions:
   contents: read
   pages: write
-  id-token: write # ¡Esta es la línea clave para el error que estás viendo!
+  id-token: write
 
 jobs:
-  build-and-deploy: # O 'build' si tienes dos jobs separados
+  build-and-deploy: # Este es el nombre de tu job
     runs-on: ubuntu-latest
+    environment: # <--- ¡AÑADE ESTA SECCIÓN AQUÍ!
+      name: github-pages # Este es el nombre del entorno de GitHub Pages
+    #url: ${{ steps.deployment.outputs.page_url }} # Puedes añadir esta línea también si quieres la URL en el resumen del job
 
     steps:
       - name: Checkout your repository code
